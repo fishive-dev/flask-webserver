@@ -60,9 +60,13 @@ async function update_record() {
 
 
 // driver code
+    var delay = await fetch('http://fastapi.fishive.site/get-db-json');
+    delay = await delay.json();
+    delay = delay["time_quantum"];
+
 while (true) {
     await update_record();
     await console.log("Updated record!");
-    await sleep(30000);
+    await sleep(delay);
 
 }
